@@ -21,7 +21,7 @@ Sprite _$SpriteFromJson(Map<String, dynamic> json) {
 class _$SpriteTearOff {
   const _$SpriteTearOff();
 
-  _Sprite call(String frontDefault) {
+  _Sprite call(@JsonKey(name: 'front_default') String frontDefault) {
     return _Sprite(
       frontDefault,
     );
@@ -37,6 +37,7 @@ const $Sprite = _$SpriteTearOff();
 
 /// @nodoc
 mixin _$Sprite {
+  @JsonKey(name: 'front_default')
   String get frontDefault => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -48,7 +49,7 @@ mixin _$Sprite {
 abstract class $SpriteCopyWith<$Res> {
   factory $SpriteCopyWith(Sprite value, $Res Function(Sprite) then) =
       _$SpriteCopyWithImpl<$Res>;
-  $Res call({String frontDefault});
+  $Res call({@JsonKey(name: 'front_default') String frontDefault});
 }
 
 /// @nodoc
@@ -77,7 +78,7 @@ abstract class _$SpriteCopyWith<$Res> implements $SpriteCopyWith<$Res> {
   factory _$SpriteCopyWith(_Sprite value, $Res Function(_Sprite) then) =
       __$SpriteCopyWithImpl<$Res>;
   @override
-  $Res call({String frontDefault});
+  $Res call({@JsonKey(name: 'front_default') String frontDefault});
 }
 
 /// @nodoc
@@ -105,12 +106,13 @@ class __$SpriteCopyWithImpl<$Res> extends _$SpriteCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Sprite implements _Sprite {
-  _$_Sprite(this.frontDefault);
+  _$_Sprite(@JsonKey(name: 'front_default') this.frontDefault);
 
   factory _$_Sprite.fromJson(Map<String, dynamic> json) =>
       _$$_SpriteFromJson(json);
 
   @override
+  @JsonKey(name: 'front_default')
   final String frontDefault;
 
   @override
@@ -143,11 +145,13 @@ class _$_Sprite implements _Sprite {
 }
 
 abstract class _Sprite implements Sprite {
-  factory _Sprite(String frontDefault) = _$_Sprite;
+  factory _Sprite(@JsonKey(name: 'front_default') String frontDefault) =
+      _$_Sprite;
 
   factory _Sprite.fromJson(Map<String, dynamic> json) = _$_Sprite.fromJson;
 
   @override
+  @JsonKey(name: 'front_default')
   String get frontDefault;
   @override
   @JsonKey(ignore: true)

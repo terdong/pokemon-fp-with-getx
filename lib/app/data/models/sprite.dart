@@ -5,7 +5,8 @@ part 'sprite.g.dart';
 
 @freezed
 class Sprite with _$Sprite {
-  factory Sprite(final String frontDefault) = _Sprite;
+  factory Sprite(@JsonKey(name: 'front_default') final String frontDefault) =
+      _Sprite;
 
   factory Sprite.fromJson(Map<String, dynamic> json) => _$SpriteFromJson(json);
 }

@@ -1,8 +1,9 @@
+import 'dart:convert';
+
 import 'package:fpdart/fpdart.dart';
+import 'package:http/http.dart' as http;
 import 'package:pokemon_fp_with_gext/app/data/constants.dart';
 import 'package:pokemon_fp_with_gext/app/data/models/pokemon.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 
 extension NumberParsing on String {
   int parseInt() {
