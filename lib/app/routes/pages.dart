@@ -8,7 +8,7 @@ abstract class AppPages {
     GetPage(
       name: Routes.INITIAL,
       binding: PokemonBinding(),
-      page: () => PokemonPage(),
+      page: () => const PokemonPage(),
     )
   ];
 }
