@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:gcl_for_flutter/gcl.dart';
 import 'package:get/get.dart';
+import 'package:pokemon_fp_with_gext/app/controllers/pokemon_controller.dart';
 import 'package:pokemon_fp_with_gext/app/data/models/pokemon.dart';
-import '../../../controllers/pokemon_controller.dart';
 
-class PokemonPage extends GetView<PokemonController> {
+class PokemonPage extends GetView<PokemonController> with LoggerProvider {
   const PokemonPage({Key? key}) : super(key: key);
 
   @override

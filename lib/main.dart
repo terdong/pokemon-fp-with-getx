@@ -1,11 +1,14 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:gcl_for_flutter/gcl.dart';
 import 'package:get/get.dart';
 
 import 'app/routes/pages.dart';
 
 void main() {
+  startGcl();
+  // configureDependencies();
   WidgetsFlutterBinding.ensureInitialized();
   runApp(DevicePreview(
     defaultDevice: Devices.android.samsungGalaxyS20,

@@ -4,9 +4,8 @@ import 'package:get/get.dart';
 import 'package:pokemon_fp_with_gext/app/data/constants.dart';
 import 'package:pokemon_fp_with_gext/app/data/models/pokemon.dart';
 import 'package:pokemon_fp_with_gext/app/data/provider/fetch_pokemon.dart';
-import 'package:pokemon_fp_with_gext/app/ui/utils/logger_provider.dart';
 
-class PokemonController extends GetNotifier<List<Pokemon>> with LoggerProvider {
+class PokemonController extends GetNotifier<List<Pokemon>> {
   final pokemonIdController = TextEditingController();
 
   PokemonController() : super(List.empty());
