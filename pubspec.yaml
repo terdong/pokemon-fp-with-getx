@@ -41,11 +41,11 @@ dependencies:
   logger: ^1.1.0
   freezed_annotation: ^1.1.0
   http: ^0.13.4
-  get_it: ^7.2.0
 
   gcl_for_flutter:
     git:
       url: git://github.com/terdong/gcl_for_flutter
+  flutter_bloc: ^8.0.1
 
 dev_dependencies:
   flutter_test:
