@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:fpdart/fpdart.dart';
 import 'package:http/http.dart' as http;
-import 'package:pokemon_fp_with_gext/app/data/constants.dart';
-import 'package:pokemon_fp_with_gext/app/data/models/pokemon.dart';
+import 'package:pokemon_fp_with_gext/src/data/constants.dart';
+import 'package:pokemon_fp_with_gext/src/data/models/pokemon.dart';
 
 extension NumberParsing on String {
   int parseInt() {
@@ -17,7 +17,7 @@ IOEither<String, int> _parseStringToInt(String str) => IOEither.tryCatch(
         'Cannot convert input to valid pokemon id (it must be a number)!');
 
 IOEither<String,
-    int> _validateUserPokemonId(String pokemonId) => _parseStringToInt(
+    int> validateUserPokemonId(String pokemonId) => _parseStringToInt(
         pokemonId)
     .flatMap((intPokemonId) => IOEither.fromPredicate(
         intPokemonId,
@@ -35,4 +35,4 @@ TaskEither<String, Pokemon> fetchPokemon(int pokemonId) =>
     }, (error, stackTrace) => 'Unknown error: $error');
 
 TaskEither<String, Pokemon> fetchPokemonFromUserInput(String pokemonId) =>
-    _validateUserPokemonId(pokemonId).flatMapTask(fetchPokemon);
+    validateUserPokemonId(pokemonId).flatMapTask(fetchPokemon);
