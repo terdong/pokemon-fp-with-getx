@@ -14,25 +14,22 @@ class PokemonBloc extends FormBloc<Pokemon, String> with LoggerProvider {
   PokemonBloc() {
     addFieldBlocs(fieldBlocs: [pokemonId]);
 
-    pokemonId.addAsyncValidators([_checkUsername]);
-
-    /*    pokemonId.addAsyncValidators(
-      [_checkUsername],
-    ); */
+    pokemonId.addAsyncValidators([checkPokemonId]);
   }
 
-  Future<String?> _checkUsername(String pokemonId) async {
-    return validateUserPokemonId(pokemonId).match((l) {
-      return l;
-    }, (r) {
-      _fetch();
-      return null;
-    }).run();
+  Future<String?> checkPokemonId(String pokemonId) async {
+    emitLoading();
+    return (await fetchPokemonFromUserInput(pokemonId).run()).match(
+      (error) => error,
+      (pokemon) {
+        emitSuccess(successResponse: pokemon);
+        unit;
+      },
+    );
   }
 
   @override
   void onSubmitting() {
-    logd(pokemonId.value);
     _fetch();
   }
 
@@ -50,9 +47,9 @@ class PokemonBloc extends FormBloc<Pokemon, String> with LoggerProvider {
       );
 
   Future<Unit> _pokemonRequest(
-      TaskEither<String, Pokemon> Function() requset) async {
+      TaskEither<String, Pokemon> Function() request) async {
     emitLoading();
-    final pokemon = requset();
+    final TaskEither<String, Pokemon> pokemon = request();
     (await pokemon.run()).match((error) => emitFailure(failureResponse: error),
         (pokemon) => emitSuccess(successResponse: pokemon));
     return unit;
