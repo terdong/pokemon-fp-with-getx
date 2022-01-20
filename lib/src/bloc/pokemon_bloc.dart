@@ -44,7 +44,7 @@ class PokemonBloc extends FormBloc<Pokemon, String> with LoggerProvider {
       return error;
     }, (pokemon) {
       emitSuccess(successResponse: pokemon);
-      return '';
+      return GclConst.emptyString;
     });
   }
 }

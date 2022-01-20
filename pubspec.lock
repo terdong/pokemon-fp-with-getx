@@ -341,7 +341,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "251d6752079b3d8fc834a7f22d6a3cbeef8457b3"
+      resolved-ref: "993f3d332102b7fa2b62638258ec510c3393532a"
       url: "git://github.com/terdong/gcl_for_flutter"
     source: git
     version: "0.0.1"
