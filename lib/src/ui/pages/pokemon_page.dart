@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nil/nil.dart';
 import 'package:pokemon_fp_with_gext/src/bloc/pokemon_bloc.dart';
 import 'package:pokemon_fp_with_gext/src/data/models/pokemon.dart';
@@ -38,7 +39,9 @@ class PokemonPage extends StatelessWidget {
               SingleChildScrollView(
                 child: FormBlocListener<PokemonBloc, Pokemon, String>(
                     onSubmitting: (context, state) {},
-                    onSuccess: (context, state) {},
+                    onSuccess: (context, state) {
+                      context.go('/pokemon/${state.successResponse!.id}');
+                    },
                     onFailure: (context, state) {},
                     child: BlocBuilder<PokemonBloc, FormBlocState>(
                         builder: (context, FormBlocState state) {
@@ -46,7 +49,7 @@ class PokemonPage extends StatelessWidget {
                         return const Center(
                           child: CircularProgressIndicator(),
                         );
-                      } else if (state is FormBlocSuccess) {
+/*                       } else if (state is FormBlocSuccess) {
                         final pokemon = state.successResponse;
                         return Card(
                           child: Column(
@@ -70,7 +73,7 @@ class PokemonPage extends StatelessWidget {
                               ),
                             ],
                           ),
-                        );
+                        ); */
                       } else if (state is FormBlocFailure) {
                         return Text(state.failureResponse);
                       } else {
