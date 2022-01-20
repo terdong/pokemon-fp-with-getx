@@ -1,6 +1,6 @@
-# pokemon_fp_with_gext
+# pokemon_fp_with_bloc
 
-This project has been migrated from [the pokemon project of fpdart](https://github.com/SandroMaglione/fpdart/tree/main/example/pokeapi_functional) using getx, freezed, etc.
+This project has been migrated from [the pokemon project of fpdart](https://github.com/SandroMaglione/fpdart/tree/main/example/pokeapi_functional) using bloc, freezed, etc.
 
 ## Getting Started
 

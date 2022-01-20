@@ -14,26 +14,15 @@ class PokemonBloc extends FormBloc<Pokemon, String> with LoggerProvider {
   PokemonBloc() {
     addFieldBlocs(fieldBlocs: [pokemonId]);
 
-    pokemonId.addAsyncValidators([checkPokemonId]);
-  }
-
-  Future<String?> checkPokemonId(String pokemonId) async {
-    emitLoading();
-    return (await fetchPokemonFromUserInput(pokemonId).run()).match(
-      (error) => error,
-      (pokemon) {
-        emitSuccess(successResponse: pokemon);
-        unit;
-      },
-    );
+    pokemonId.addAsyncValidators([_fetch]);
   }
 
   @override
   void onSubmitting() {
-    _fetch();
+    _fetch(pokemonId.value);
   }
 
-  Future<Unit> fetchRandom() async => _pokemonRequest(
+  Future<String> fetchRandom() async => _pokemonRequest(
         () => fetchPokemon(
           randomInt(
             Constants.minimumPokemonId,
@@ -42,16 +31,20 @@ class PokemonBloc extends FormBloc<Pokemon, String> with LoggerProvider {
         ),
       );
 
-  Future<Unit> _fetch() async => _pokemonRequest(
-        () => fetchPokemonFromUserInput(pokemonId.value),
+  Future<String> _fetch(String pokemonId) async => _pokemonRequest(
+        () => fetchPokemonFromUserInput(pokemonId),
       );
 
-  Future<Unit> _pokemonRequest(
+  Future<String> _pokemonRequest(
       TaskEither<String, Pokemon> Function() request) async {
     emitLoading();
     final TaskEither<String, Pokemon> pokemon = request();
-    (await pokemon.run()).match((error) => emitFailure(failureResponse: error),
-        (pokemon) => emitSuccess(successResponse: pokemon));
-    return unit;
+    return (await pokemon.run()).fold((error) {
+      emitFailure(failureResponse: error);
+      return error;
+    }, (pokemon) {
+      emitSuccess(successResponse: pokemon);
+      return '';
+    });
   }
 }

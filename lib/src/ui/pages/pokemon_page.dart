@@ -11,6 +11,7 @@ class PokemonPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final formBloc = context.read<PokemonBloc>();
+    formBloc.fetchRandom();
     //final cubit = context.read<FormBlocState>();
     //context.read<PokemonCubit>().fetchRandom();
     //return Container();
