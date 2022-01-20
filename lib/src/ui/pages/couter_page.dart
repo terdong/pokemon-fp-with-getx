@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gcl_for_flutter/gcl.dart';
 
@@ -24,13 +23,13 @@ class CounterPage extends StatelessWidget with LoggerProvider {
     logd("called build");
     counterBloc = context.read<CounterBloc>();
     return Scaffold(
-      appBar: AppBar(title: Text('Counter')),
+      appBar: AppBar(title: const Text('Counter')),
       body: BlocBuilder<CounterBloc, int>(
         builder: (context, count) {
           return Center(
             child: Text(
               '$count',
-              style: TextStyle(fontSize: 24.0),
+              style: const TextStyle(fontSize: 24.0),
             ),
           );
         },
@@ -40,16 +39,16 @@ class CounterPage extends StatelessWidget with LoggerProvider {
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 5.0),
+            padding: const EdgeInsets.symmetric(vertical: 5.0),
             child: FloatingActionButton(
-              child: Icon(Icons.add),
+              child: const Icon(Icons.add),
               onPressed: () => counterBloc.add(CounterIncrementPressed()),
             ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 5.0),
+            padding: const EdgeInsets.symmetric(vertical: 5.0),
             child: FloatingActionButton(
-              child: Icon(Icons.remove),
+              child: const Icon(Icons.remove),
               onPressed: () => counterBloc.add(CounterDecrementPressed()),
             ),
           ),

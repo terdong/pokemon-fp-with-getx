@@ -43,7 +43,7 @@ class RouterParser extends RouteInformationParser<RouterState> {
       return RouterState.page2(
           extraPageContent: uri.pathSegments[1].replaceAll("-", " "));
     } else {
-      return RouterState.page2();
+      return const RouterState.page2();
     }
   }
 
@@ -52,7 +52,7 @@ class RouterParser extends RouteInformationParser<RouterState> {
       return RouterState.page3(
           extraPageContent: uri.pathSegments[1].replaceAll("-", " "));
     } else {
-      return RouterState.page3();
+      return const RouterState.page3();
     }
   }
 
@@ -61,7 +61,7 @@ class RouterParser extends RouteInformationParser<RouterState> {
       return RouterState.page4(
           extraPageContent: uri.pathSegments[1].replaceAll("-", " "));
     } else {
-      return RouterState.page4();
+      return const RouterState.page4();
     }
   }
 
